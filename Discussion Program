@@ -1,0 +1,37 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        // Create an instance of the Stock class
+        Stock msft = new Stock { Name = "MSFT", SharesOwned = 1000 };
+
+        // Display the stock information
+        Display(msft);
+    }
+
+    // Method to display information about an asset
+    static void Display(Asset asset)
+    {
+        Console.WriteLine($"Asset Name: {asset.Name}");
+
+        // Use downcasting to access Stock-specific properties
+        if (asset is Stock stock)
+        {
+            Console.WriteLine($"Shares Owned: {stock.SharesOwned}");
+        }
+    }
+}
+
+// Base class
+public class Asset
+{
+    public string Name;
+}
+
+// Derived class
+public class Stock : Asset  // Inheriting from Asset
+{
+    public long SharesOwned;
+}

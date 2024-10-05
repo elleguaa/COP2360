@@ -1,0 +1,54 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Enter the first number:");
+        string firstInput = Console.ReadLine();
+
+        Console.WriteLine("Enter the second number:");
+        string secondInput = Console.ReadLine();
+
+        try
+        {
+            // Convert the inputs to integers
+            int number1 = int.Parse(firstInput);
+            int number2 = int.Parse(secondInput);
+
+            // Call the division method
+            int result = PerformDivision(number1, number2);
+
+            // Output the result if no exceptions occur
+            Console.WriteLine($"The result of dividing {number1} by {number2} is: {result}");
+        }
+        catch (FormatException ex)
+        {
+            // Handle cases where the input cannot be converted to an integer
+            Console.WriteLine("Error: Invalid number format.");
+            Console.WriteLine($"Details: {ex.Message}");
+        }
+        catch (DivideByZeroException ex)
+        {
+            // Handle division by zero
+            Console.WriteLine("Error: Division by zero is not allowed.");
+            Console.WriteLine($"Details: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            // Handle any other unexpected errors
+            Console.WriteLine("An unexpected error occurred.");
+            Console.WriteLine($"Details: {ex.Message}");
+        }
+
+        // Prompt to exit
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
+    }
+
+    // Method to perform the division
+    static int PerformDivision(int a, int b)
+    {
+        return a / b;
+    }
+}
